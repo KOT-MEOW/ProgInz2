@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -22,6 +23,7 @@ import lombok.ToString;
 @Table(name = "ProfessorTable")
 @Entity
 public class Professor {
+	
 	@Id
 	@Column(name = "Idp")
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -43,7 +45,11 @@ public class Professor {
 	@NotNull
 	@Column(name="Degree")
 	private Degree degree;
-
+	
+	@OneToOne(mappedBy = "professor")
+	@ToString.Exclude
+	private Course course;
+	
 	public Professor(String name, String surname, Degree degree) {
 		setName(name);
 		setSurname(surname);
