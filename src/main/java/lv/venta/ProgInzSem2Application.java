@@ -29,7 +29,7 @@ public class ProgInzSem2Application {
 			
 			@Override
 			public void run(String... args) throws Exception {
-				
+				/*
 				Professor p1 = new Professor("Ilja", "Avlass", Degree.phd);
 				Professor p2 = new Professor("Nikita", "Rezkov", Degree.mg);
 				Professor p3 = new Professor("Amina", "Kazanceva", Degree.bsc);
@@ -62,7 +62,7 @@ public class ProgInzSem2Application {
 				gradeRepo.save(new Grade(9, c3, s1));
 				gradeRepo.save(new Grade(7, c3, s2));
 				gradeRepo.save(new Grade(10, c3, s3));
-				
+				*/
 				
 			}
 		};
