@@ -38,7 +38,7 @@ public class CourseFilterController {
 
 		try
 		{
-			Course selectedCourse = courseFilterService.selectCourseByProfessorID(id);
+			ArrayList<Course> selectedCourse = courseFilterService.selectCourseByProfessorID(id);
 			model.addAttribute("mydata", selectedCourse);
 			model.addAttribute("msg", "Course filtered by professor");
 			return "course-show-one-page";

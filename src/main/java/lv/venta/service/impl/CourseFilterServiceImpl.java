@@ -35,13 +35,13 @@ public class CourseFilterServiceImpl implements ICourseFilteringService{
 	}
 
 	@Override
-	public Course selectCourseByProfessorID(int id) throws Exception {
+	public ArrayList<Course> selectCourseByProfessorID(int id) throws Exception {
 		
 		if(id < 1) throw new Exception("ID should be positive");
 		
 		if(!profRepo.existsById(id)) throw new Exception("Professor with " + id + " doesn't exists");
 		
-		Course result = courseRepo.findByProfessorIdp(id);
+		ArrayList<Course> result = courseRepo.findByProfessorsIdp(id);
 		
 		if(result == null) throw new Exception("There is no course linkage to this Professor");
 		

@@ -29,6 +29,7 @@ public class ProgInzSem2Application {
 			
 			@Override
 			public void run(String... args) throws Exception {
+				
 				/*
 				Professor p1 = new Professor("Ilja", "Avlass", Degree.phd);
 				Professor p2 = new Professor("Nikita", "Rezkov", Degree.mg);
@@ -46,10 +47,19 @@ public class ProgInzSem2Application {
 				
 				Course c1 = new Course("Datu strukturas un algoritmi", 2, p1);
 				Course c2 = new Course("Datubazes", 2, p2);
-				Course c3 = new Course("Programmaturas inzenerija", 4, p3);
+				Course c3 = new Course("Programmaturas inzenerija", 4, p3, p1);
 				courseRepo.save(c1);
 				courseRepo.save(c2);
 				courseRepo.save(c3);
+				
+				p1.addCourse(c1);
+				p1.addCourse(c3);
+				profRepo.save(p1);
+				p2.addCourse(c2);
+				profRepo.save(p2);
+				p3.addCourse(c3);
+				profRepo.save(p3);
+				
 				
 				gradeRepo.save(new Grade(7, c1, s1));
 				gradeRepo.save(new Grade(6, c1, s2));
@@ -63,6 +73,7 @@ public class ProgInzSem2Application {
 				gradeRepo.save(new Grade(7, c3, s2));
 				gradeRepo.save(new Grade(10, c3, s3));
 				*/
+				
 				
 			}
 		};
