@@ -55,7 +55,7 @@ public class CourseFilterServiceImpl implements ICourseFilteringService{
 		
 		if(!studRepo.existsById(id)) throw new Exception("Student with " + id + " doesn't exists");
 		
-		ArrayList<Course> result = courseRepo.findByGradeStudentIds(id);
+		ArrayList<Course> result = courseRepo.findByGradesStudentIds(id);
 		
 		if(result.isEmpty()) throw new Exception("There is no course linkage to this Student");
 		

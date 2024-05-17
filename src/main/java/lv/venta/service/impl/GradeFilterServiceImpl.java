@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lv.venta.model.Grade;
+import lv.venta.repo.ICourseRepo;
 import lv.venta.repo.IGradeRepo;
 import lv.venta.repo.IStudentRepo;
 import lv.venta.service.IGradesFilteringService;
@@ -17,6 +18,8 @@ public class GradeFilterServiceImpl implements IGradesFilteringService{
 	private IGradeRepo gradeRepo;
 	@Autowired
 	private IStudentRepo studRepo;
+	@Autowired
+	private ICourseRepo courseRepo;
 	
 	
 	@Override
@@ -36,15 +39,25 @@ public class GradeFilterServiceImpl implements IGradesFilteringService{
 		
 		if(!studRepo.existsById(id)) throw new Exception("Student with " + id + " doesn't exists");
 		
-		// add code here >
+		ArrayList<Grade> result = gradeRepo.findByStudentIds(id);
 		
-		return null;
+		if(result.isEmpty()) throw new Exception("There is no grades linkage to this Student");
+		
+		return result;
 	}
 
 	@Override
 	public float calculateAVGGradeInCourseID(int id) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		if(id < 1) throw new Exception("ID should be positive");
+		
+		if(!courseRepo.existsById(id)) throw new Exception("Course with " + id + " doesn't exists");
+		
+		float result = gradeRepo.calculateAVGGradeInCourseById(id);
+		
+		if(result == 0) throw new Exception("There is no grade for this course");
+		
+		return result;
 	}
 
 }
