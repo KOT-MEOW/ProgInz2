@@ -13,7 +13,7 @@ public interface IGradeRepo extends CrudRepository<Grade, Integer>{
 
 	ArrayList<Grade> findByStudentIds(int id);
 
-	@Query(nativeQuery = true, value = "select avg(grades) from grade_table where idc=?1;")
+	@Query(nativeQuery = true, value = "select avg(grades) from grade_table where idc=(?1);")
 	float calculateAVGGradeInCourseById(int id);
 
 }

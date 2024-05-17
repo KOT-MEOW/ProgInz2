@@ -22,7 +22,7 @@ public class GradeFilterController {
 	@Autowired
 	private IGradesFilteringService gradeFilterService;
 	
-	@GetMapping("/failed") // localhost:8080/course/filter/failed
+	@GetMapping("/failed") // localhost:8080/grade/filter/failed
 	public String getGradesFiltredByFailedGrades(Model model) {
 		try {
 			ArrayList<Grade> selectGrades = gradeFilterService.selectFailedGrades();
@@ -35,10 +35,35 @@ public class GradeFilterController {
 		}
 	}
 	
+	@GetMapping("/student/{id}") // localhost:8080/grade/filter/student/{id}
+	public String getAllGradesByStudentID(@PathVariable("id") int id, Model model) {
+		try {
+			ArrayList<Grade> selectGrades = gradeFilterService.allGradesByStudentID(id);
+			model.addAttribute("mydata", selectGrades);
+			model.addAttribute("msg", "All student grades");
+			return "grades-show-all-page";
+		} catch (Exception e) {
+			model.addAttribute("", e.getMessage());
+			return "error-page";
+		}
+	}
 	
 	
-	
-	
+
+	@GetMapping("/avg/course/{id}") //localhost:8080/grade/filter/avg/course/{id}
+	public String getGradeFilterAVGByCourseId(@PathVariable("id") int id, Model model) {
+		try
+		{
+			float avgGrades = gradeFilterService.calculateAVGGradeInCourseID(id);
+			model.addAttribute("msg", "Avg grade: " + avgGrades);
+			return "grades-show-all-page";
+		}
+		catch (Exception e) {
+			model.addAttribute("mydata", e.getMessage());
+			return "error-page";
+
+		}
+	}
 	
 	
 }
