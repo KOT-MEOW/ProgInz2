@@ -13,13 +13,13 @@ import lv.venta.model.Course;
 import lv.venta.service.ICourseFilteringService;
 
 @Controller
-@RequestMapping("/course")
+@RequestMapping("/course/filter")
 public class CourseFilterController {
 
 	@Autowired
 	private ICourseFilteringService courseFilterService;
 	
-	@GetMapping("/filter/creditpoints/{param}") // localhost:8080/course/filter/creditpoints/{param}
+	@GetMapping("/creditpoints/{param}") // localhost:8080/course/filter/creditpoints/{param}
 	public String getCourseFilterByCreditpoints(@PathVariable("param") int param, Model model) {
 		try {
 			ArrayList<Course> selectedCourses = courseFilterService.selectCoursesByCreditpoints(param);
@@ -33,7 +33,7 @@ public class CourseFilterController {
 	}
 	
 
-	@GetMapping("/filter/professor/{id}") //localhost:8080/course/filter/professor/{id}
+	@GetMapping("/professor/{id}") //localhost:8080/course/filter/professor/{id}
 	public String getCourseFilterByProfessorId(@PathVariable("id") int id, Model model) {
 
 		try
@@ -50,7 +50,7 @@ public class CourseFilterController {
 	}
 	
 	
-	@GetMapping("/filter/student/{id}") // localhost:8080/course/filter/student/{id}
+	@GetMapping("/student/{id}") // localhost:8080/course/filter/student/{id}
 	public String getCoursesFiltredByStudentId(@PathVariable("id") int id, Model model) {
 		try {
 			ArrayList<Course> selectedCourses = courseFilterService.selectCoursesByStudentID(id);
