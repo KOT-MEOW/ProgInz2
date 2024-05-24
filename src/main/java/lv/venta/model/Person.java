@@ -25,8 +25,9 @@ import lombok.ToString;
 @ToString
 @Table(name = "Person")
 @Entity
-// @Inheritance(strategy = InheritanceType.JOINED) // kopigas lietas (idpe, name, surname)
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+// @Inheritance(strategy = InheritanceType.JOINED) // kopigas lietas (idpe, name, surname) ir personas tabula un atskirigas bernu tabula
+// @Inheritance(strategy = InheritanceType.SINGLE_TABLE) // viss Students, Professor, Personas) nus viena tabula
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS) // katrai clasei sava tabula, bet bazes tabula ir tuksa
 public class Person {
 
 	@Id
