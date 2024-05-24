@@ -22,12 +22,7 @@ import lombok.ToString;
 @Table(name="StudentTable")
 @Entity
 public class Student extends Person{
-
-	@Id
-	@Column(name = "Ids")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Setter(value = AccessLevel.NONE)
-	private int ids;
+	
 
 	
 	@OneToMany(mappedBy = "student")

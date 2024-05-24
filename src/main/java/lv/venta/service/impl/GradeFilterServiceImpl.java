@@ -39,7 +39,7 @@ public class GradeFilterServiceImpl implements IGradesFilteringService{
 		
 		if(!studRepo.existsById(id)) throw new Exception("Student with " + id + " doesn't exists");
 		
-		ArrayList<Grade> result = gradeRepo.findByStudentIds(id);
+		ArrayList<Grade> result = gradeRepo.findByStudentIdpe(id);
 		
 		if(result.isEmpty()) throw new Exception("There is no grades linkage to this Student");
 		

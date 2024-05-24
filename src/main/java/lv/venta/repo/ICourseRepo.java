@@ -10,8 +10,8 @@ public interface ICourseRepo extends CrudRepository<Course, Integer>{
 
 	ArrayList<Course> findByCreditpoints(int creditpoints);
 
-	Course findByProfessorIdp(int id);
+	Course findByProfessorIdpe(int id);
 
-	ArrayList<Course> findByGradesStudentIds(int id);
+	ArrayList<Course> findByGradesStudentIdpe(int id);
 
 }
